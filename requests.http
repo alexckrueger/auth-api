@@ -1,0 +1,27 @@
+@domain = http://localhost:3000
+@jwtbear = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMzMjI2NjN9.3zTpqOAWozUAO_CbH7PtkjzDUllCP2NQr3L3cUayL-I
+@jwttiny = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMzMjI2OTF9.fkmfEQc8YbL4vbcv1sz6nSo-SJxEJMKB4kPR348ERZE
+
+### Users create (signup)
+POST {{ domain }}/users
+Content-Type: application/json
+
+{
+  "name": "Tiny",
+  "email": "tiny@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login)
+POST {{ domain }}/sessions
+Content-Type: application/json
+
+{
+  "email": "tiny@test.com",
+  "password": "password"
+}
+
+### current_user info
+GET {{ domain }}/user_info
+Authorization: Bearer {{jwttiny}}
